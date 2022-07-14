@@ -29,7 +29,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<String> lista = [];
-  String scannerInput = "";
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
     void onKeyRawKeyboardListener(RawKeyEvent keyEvent) {
       if (keyEvent.character != null) {
+        print("Entrando!");
         setState(() {
-          scannerInput += "$keyEvent\n\n";
+          lista.add("$keyEvent\n\n");
         });
-        if (keyEvent.isKeyPressed(LogicalKeyboardKey.enter)) {
-          setState(() {
-            lista.add(scannerInput);
-            scannerInput = '';
-          });
-        }
       }
     }
 
